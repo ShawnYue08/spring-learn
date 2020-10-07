@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--给Student的studentName属性设置空值-->
+    <bean id="student2" class="org.westos.entity.Student">
+        <property name="studentNo" value="04171100"/>
+        <!--向属性中设置null值-->
+        <property name="studentName">
+            <null/>
+        </property>
+    </bean>
+
+    <!--Student的属性值包含特殊符号-->
+    <bean id="student3" class="org.westos.entity.Student">
+        <property name="studentNo" value="02176782"/>
+        <!--1、转义-->
+        <!--<property name="studentName" value="&lt;&lt;李四&gt;&gt;"/>-->
+        <!--2、xml文件的功能，CDATA-->
+        <property name="studentName">
+            <value><![CDATA[<<李四>>]]></value>
+        </property>
+    </bean>
+</beans>

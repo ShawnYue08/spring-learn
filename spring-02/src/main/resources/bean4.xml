@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="collectionDemo" class="org.westos.entity.CollectionDemo">
+        <!--数组类型属性注入-->
+        <property name="names">
+            <!--array或者list-->
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+        <!--List类型属性注入-->
+        <property name="scores">
+            <list>
+                <value>80</value>
+                <value>87</value>
+                <value>88</value>
+            </list>
+        </property>
+        <!--Map类型属性注入-->
+        <property name="students">
+            <map>
+                <entry key="张三">
+                    <!--当值是一个对象时,可以引入外部的bean,使用ref标签-->
+                    <!--<ref bean="student"/>-->
+                    <bean class="org.westos.entity.Student">
+                        <property name="studentNo" value="01278641"/>
+                        <property name="studentName" value="张三"/>
+                    </bean>
+                </entry>
+                <entry key="李四">
+                    <bean class="org.westos.entity.Student">
+                        <property name="studentNo" value="12671628"/>
+                        <property name="studentName" value="李四"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+        <!--Set类型属性注入-->
+        <property name="ids">
+            <set>
+                <value>string</value>
+                <value>integer</value>
+                <value>char</value>
+            </set>
+        </property>
+    </bean>
+</beans>

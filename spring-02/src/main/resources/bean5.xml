@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="student1" class="org.westos.entity.Student" p:studentName="张三" p:studentNo="716217255"/>
+
+    <bean id="student12" class="org.westos.entity.Student" p:studentName="李四" p:studentNo="1276312t"/>
+
+    <!--如果需要提取集合作为公共部分，需要引入util命名空间-->
+    <util:list id="students">
+        <ref bean="student1"/>
+        <ref bean="student12"/>
+    </util:list>
+
+    <bean id="collectionDemo2" class="org.westos.entity.CollectionDemo2">
+        <property name="list" ref="students"/>
+    </bean>
+</beans>

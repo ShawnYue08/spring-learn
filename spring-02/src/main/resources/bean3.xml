@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--注入内部bean-->
+    <bean id="emp" class="org.westos.entity.Employee">
+        <property name="employeeName" value="王五"/>
+        <property name="employeeAge" value="25"/>
+        <property name="department">
+            <!--内部bean,感觉没有外部bean清晰-->
+            <bean id="department" class="org.westos.entity.Department">
+                <property name="departmentId" value="001"/>
+                <property name="departmentName" value="人工智能部"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--级联赋值-->
+    <bean id="employee" class="org.westos.entity.Employee">
+        <property name="employeeName" value="赵六"/>
+        <property name="employeeAge" value="26"/>
+        <property name="department" ref="department2"/>
+        <property name="department.departmentName" value="云平台部"/>
+        <!--这样做会修改原有bean的属性值-->
+    </bean>
+
+    <bean id="department2" class="org.westos.entity.Department">
+        <property name="departmentId" value="002"/>
+        <property name="departmentName" value="大数据部"/>
+    </bean>
+</beans>

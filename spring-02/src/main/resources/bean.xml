@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--使用set注入属性-->
+    <bean id="student" class="org.westos.entity.Student">
+        <!--使用property标签完成属性注入-->
+        <property name="studentNo" value="01172100"/>
+        <property name="studentName" value="张三"/>
+    </bean>
+
+    <!--使用有参构造注入属性-->
+    <bean id="book" class="org.westos.entity.Book">
+        <constructor-arg name="bookName" value="白夜行"/>
+        <constructor-arg name="bookPrice" value="55.5"/>
+    </bean>
+
+    <!--使用p命名空间简化set注入属性-->
+    <bean id="order" class="org.westos.entity.Order" p:orderId="202010021623" p:orderName="联想笔记本电脑-拯救者"/>
+
+    <!--使用c命名空间简化有参构造器注入-->
+    <bean id="book1" class="org.westos.entity.Book" c:bookName="解忧杂货店" c:bookPrice="99.9"/>
+</beans>
